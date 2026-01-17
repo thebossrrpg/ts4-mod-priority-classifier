@@ -41,11 +41,7 @@ with st.sidebar:
 
     # Escolha do modelo e labels de API
     if "Gemini" in llm_provider:
-        # Pro (mais pesado, melhor raciocínio)
-        model = "models/gemini-1.5-pro-002"
-        # ou Flash (mais rápido e barato):
-        # model = "models/gemini-1.5-flash-002"
-
+        model = "gemini-pro"
         api_label = "Google API Key"
         help_text = "Pegue em: https://makersuite.google.com/app/apikey"
 
