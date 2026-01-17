@@ -42,22 +42,19 @@ with st.sidebar:
     )
     
 if "Gemini" in llm_provider:
-        # escolha 1: Pro (mais pesado, melhor raciocínio)
-        model = "models/gemini-1.5-pro-002"
-        # ou escolha 2: Flash (mais rápido e barato)
-        # model = "models/gemini-1.5-flash-002"
+    model = "models/gemini-1.5-pro-002"
+    api_label = "Google API Key"
+    help_text = "Pegue em: https://makersuite.google.com/app/apikey"
 
-        api_label = "Google API Key"
-        help_text = "Pegue em: https://makersuite.google.com/app/apikey"
+elif "OpenAI" in llm_provider:
+    model = "gpt-4.1-mini"
+    api_label = "OpenAI API Key"
+    help_text = "Pegue em: https://platform.openai.com/api-keys"
 
-    elif "OpenAI" in llm_provider:
-        model = "gpt-4o"
-        api_label = "OpenAI API Key" 
-        help_text = "Pegue em: https://platform.openai.com/api-keys"
-    else:
-        model = "claude-3-opus-20240229"
-        api_label = "Anthropic API Key"
-        help_text = "Pegue em: https://console.anthropic.com/"
+elif "Anthropic" in llm_provider:
+    model = "claude-3-5-sonnet-latest"
+    api_label = "Anthropic API Key"
+    help_text = "Pegue em: https://console.anthropic.com/settings/keys"
     
     llm_api_key = st.text_input(
         api_label,
