@@ -79,7 +79,7 @@ with st.sidebar:
     st.info("💡 **Opcional:** Deixe em branco se quiser apenas classificar sem atualizar o Notion")
 
 # Main content
-col1, col2 = st.columns()[4][1]
+col1, col2 = st.columns([4, 1])
 
 with col1:
     st.subheader("🔗 Informações do Mod")
