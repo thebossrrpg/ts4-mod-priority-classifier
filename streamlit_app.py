@@ -5,9 +5,9 @@ import os
 # Adiciona src ao path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from web_scraper import extract_mod_content
-from llm_client import classify_with_llm  
-from notion_updater import update_notion_page
+# from web_scraper import extract_mod_content
+# from llm_client import classify_with_llm  
+# from notion_updater import update_notion_page
 
 # Configuração da página
 st.set_page_config(
