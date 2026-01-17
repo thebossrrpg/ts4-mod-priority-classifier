@@ -19,3 +19,4 @@ tenacity==8.2.3
 
 # Web scraping
 beautifulsoup4
+lxml
