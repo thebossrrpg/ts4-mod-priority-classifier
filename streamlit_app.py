@@ -1,3 +1,4 @@
+```python
 import streamlit as st
 import sys
 import os
@@ -6,7 +7,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 from web_scraper import extract_mod_content
-from llm_client import classify_with_llm  
+from llm_client import classify_with_llm
 from notion_updater import update_notion_page
 
 # Configuração da página
@@ -18,11 +19,9 @@ st.set_page_config(
 
 # CSS customizado
 st.markdown("""
-<style>
 .big-font {font-size:20px !important; font-weight: bold;}
 .success-box {padding: 20px; border-radius: 10px; background-color: #d4edda; border: 1px solid #c3e6cb;}
 .info-box {padding: 15px; border-radius: 8px; background-color: #d1ecf1; border: 1px solid #bee5eb;}
-</style>
 """, unsafe_allow_html=True)
 
 # Header
@@ -40,22 +39,27 @@ with st.sidebar:
         ["Google Gemini (Grátis)", "OpenAI", "Anthropic"],
         help="Google Gemini é gratuito até 60 req/min"
     )
-    
-if "Gemini" in llm_provider:
-    model = "models/gemini-1.5-pro-002"
-    api_label = "Google API Key"
-    help_text = "Pegue em: https://makersuite.google.com/app/apikey"
 
-elif "OpenAI" in llm_provider:
-    model = "gpt-4.1-mini"
-    api_label = "OpenAI API Key"
-    help_text = "Pegue em: https://platform.openai.com/api-keys"
+    # Escolha do modelo e labels de API
+    if "Gemini" in llm_provider:
+        # Pro (mais pesado, melhor raciocínio)
+        model = "models/gemini-1.5-pro-002"
+        # ou Flash (mais rápido e barato):
+        # model = "models/gemini-1.5-flash-002"
 
-elif "Anthropic" in llm_provider:
-    model = "claude-3-5-sonnet-latest"
-    api_label = "Anthropic API Key"
-    help_text = "Pegue em: https://console.anthropic.com/settings/keys"
-    
+        api_label = "Google API Key"
+        help_text = "Pegue em: https://makersuite.google.com/app/apikey"
+
+    elif "OpenAI" in llm_provider:
+        model = "gpt-4o"
+        api_label = "OpenAI API Key"
+        help_text = "Pegue em: https://platform.openai.com/api-keys"
+
+    else:  # Anthropic
+        model = "claude-3-opus-20240229"
+        api_label = "Anthropic API Key"
+        help_text = "Pegue em: https://console.anthropic.com/"
+
     llm_api_key = st.text_input(
         api_label,
         value=st.secrets.get("LLM_API_KEY", ""),
@@ -76,7 +80,7 @@ elif "Anthropic" in llm_provider:
     st.info("💡 **Opcional:** Deixe em branco se quiser apenas classificar sem atualizar o Notion")
 
 # Main content
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns()[4][1]
 
 with col1:
     st.subheader("🔗 Informações do Mod")
@@ -180,9 +184,5 @@ if st.button("🚀 Classificar Mod", type="primary", use_container_width=True):
 # Footer
 st.divider()
 st.markdown("""
-<div style='text-align: center; color: #666;'>
-    <p>👨‍💻 Desenvolvido com Streamlit | 
-    <a href='https://github.com/thebossrrpg/ts4-mod-priority-classifier' target='_blank'>GitHub</a>
-    </p>
-</div>
+👨‍💻 Desenvolvido com Streamlit | [GitHub](https://github.com/thebossrrpg/ts4-mod-priority-classifier)
 """, unsafe_allow_html=True)
