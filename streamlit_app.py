@@ -54,9 +54,9 @@ with st.sidebar:
         api_label = "Anthropic API Key"
         help_text = "Pegue em: https://console.anthropic.com/"
     
-    llm_api_key = st.text_input,
-value=st.secrets.get("LLM_API_KEY", "")
+    llm_api_key = st.text_input(
         api_label,
+        value=st.secrets.get("LLM_API_KEY", ""),
         type="password",
         help=help_text
     )
@@ -64,9 +64,9 @@ value=st.secrets.get("LLM_API_KEY", "")
     st.divider()
     
     st.subheader("📓 Notion")
-    notion_api_key = st.text_input,
-        .secrets.get("NOTION_API_KEY", "")
+    notion_api_key = st.text_input(
         "Notion API Key",
+        value=st.secrets.get("NOTION_API_KEY", ""),
         type="password",
         help="Pegue em: https://www.notion.so/my-integrations"
     )
