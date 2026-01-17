@@ -1,0 +1,21 @@
+# Python Dependencies for TS4 Mod Priority Classifier
+
+# Core dependencies
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Notion API
+notion-client==2.2.1
+
+# LLM APIs
+openai==1.12.0
+anthropic==0.21.3
+
+# Web scraping
+beautifulsoup4==4.12.3
+lxml==5.1.0
+playwright==1.42.0
+
+# Utilities
+pydantic==2.6.3
+tenacity==8.2.3
